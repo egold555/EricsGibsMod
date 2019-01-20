@@ -3,7 +3,7 @@
   "modid": "gibs",
   "name": "Eric's Gibs Mod",
   "description": "Adds gibs for almost every entity. This is a client side mod only!",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "mcversion": "1.12.2",
   "authorList": ["Eric Golde"],
   "logoFile": "",

@@ -70,7 +70,7 @@ public class EntityUtil {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static ModelBase getEntityModel(EntityLivingBase entity) {
+	private static ModelBase getEntityModel(EntityLivingBase entity) {
 		
 		if(entity instanceof EntityPlayer) {
 			return null;
@@ -82,10 +82,25 @@ public class EntityUtil {
 		ModelBase model = null;
 
 		try {
-			Field e = RenderLivingBase.class.getDeclaredField("mainModel");
-
-			e.setAccessible(true);
-			model = (ModelBase) e.get(renderer);
+			
+			Field theField = null;
+			
+			for(Field f : RenderLivingBase.class.getDeclaredFields()) {
+				if(f.getType().isAssignableFrom(ModelBase.class)) {
+					theField = f;
+					ModGibs.logger.info("Found ModelBase field: " + f.getName());
+				}
+			}
+			
+			if(theField != null) {
+				theField.setAccessible(true);
+				model = (ModelBase) theField.get(renderer);
+			}
+			else {
+				ModGibs.logger.error("Found not find the obfuscated field of 'mainModel' with the type of ModeBase. You should not see this message.");
+			}
+			
+			
 		} 
 		catch (Exception ex) {
 			ex.printStackTrace();
