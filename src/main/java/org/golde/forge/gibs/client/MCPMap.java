@@ -21,9 +21,6 @@ public class MCPMap {
 		if(ModGibs.IS_RUNNING_IN_ECLIPSE) {
 			return in;
 		}
-		else {
-			ModGibs.logger.info("NOT RUNNING IN ECLIPSE");
-		}
 		
 		if(mappings.containsKey(in)) {
 			return mappings.get(in);
