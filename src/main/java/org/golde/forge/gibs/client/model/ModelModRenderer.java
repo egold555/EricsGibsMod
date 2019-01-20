@@ -2,6 +2,8 @@ package org.golde.forge.gibs.client.model;
 
 import java.lang.reflect.Field;
 
+import org.golde.forge.gibs.client.MCPMap;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
@@ -17,10 +19,10 @@ public class ModelModRenderer extends ModelRenderer {
         try {
             this.textureWidth = renderer.textureWidth;
             this.textureHeight = renderer.textureHeight;
-            Field e = ModelRenderer.class.getDeclaredField("textureOffsetX");
+            Field e = ModelRenderer.class.getDeclaredField(MCPMap.getMapping("textureOffsetX"));
 
             e.setAccessible(true);
-            e1 = ModelRenderer.class.getDeclaredField("textureOffsetY");
+            e1 = ModelRenderer.class.getDeclaredField(MCPMap.getMapping("textureOffsetY"));
             e1.setAccessible(true);
             int field11 = Integer.valueOf(e.get(renderer).toString()).intValue();
 
@@ -38,9 +40,9 @@ public class ModelModRenderer extends ModelRenderer {
             try {
                 this.textureWidth = renderer.textureWidth;
                 this.textureHeight = renderer.textureHeight;
-                e1 = ModelRenderer.class.getDeclaredField("textureOffsetX");
+                e1 = ModelRenderer.class.getDeclaredField(MCPMap.getMapping("textureOffsetX"));
                 e1.setAccessible(true);
-                Field field1 = ModelRenderer.class.getDeclaredField("textureOffsetY");
+                Field field1 = ModelRenderer.class.getDeclaredField(MCPMap.getMapping("textureOffsetY"));
 
                 field1.setAccessible(true);
                 texX = Integer.valueOf(e1.get(renderer).toString()).intValue();

@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.golde.forge.gibs.client.MCPMap;
 import org.golde.forge.gibs.client.entity.EntityGib;
 import org.golde.forge.gibs.client.particle.BloodFX;
 
@@ -83,24 +84,10 @@ public class EntityUtil {
 
 		try {
 			
-			Field theField = null;
-			
-			for(Field f : RenderLivingBase.class.getDeclaredFields()) {
-				if(f.getType().isAssignableFrom(ModelBase.class)) {
-					theField = f;
-					ModGibs.logger.info("Found ModelBase field: " + f.getName());
-				}
-			}
-			
-			if(theField != null) {
-				theField.setAccessible(true);
-				model = (ModelBase) theField.get(renderer);
-			}
-			else {
-				ModGibs.logger.error("Found not find the obfuscated field of 'mainModel' with the type of ModeBase. You should not see this message.");
-			}
-			
-			
+			Field e = RenderLivingBase.class.getDeclaredField(MCPMap.getMapping("mainModel"));
+
+			e.setAccessible(true);
+			model = (ModelBase) e.get(renderer);
 		} 
 		catch (Exception ex) {
 			ex.printStackTrace();

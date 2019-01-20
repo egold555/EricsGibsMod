@@ -18,12 +18,14 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@Mod(modid = ModGibs.MOD_ID, clientSideOnly = true, name = "Eric's Gibs", version = "1.0.1", useMetadata = true, acceptedMinecraftVersions = "[1.12]", canBeDeactivated = false)
+@Mod(modid = ModGibs.MOD_ID, clientSideOnly = true, name = "Eric's Gibs", version = "1.0.2", useMetadata = true, acceptedMinecraftVersions = "[1.12]", canBeDeactivated = false)
 public class ModGibs {
 
 	public static final String MOD_ID = "gibs";
 
 	public static Logger logger;
+	
+	public static boolean IS_RUNNING_IN_ECLIPSE = false;
 
 	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event) {
